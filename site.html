@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospedagem Minecraft 24h - Gratuito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+        header {
+            background-color: #2c3e50;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #34495e;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .banner {
+            text-align: center;
+            padding: 50px 20px;
+            background: url('https://i.imgur.com/Oc49o2l.jpg') no-repeat center center/cover;
+        }
+        .banner h2 {
+            font-size: 2em;
+            color: #fff;
+        }
+        .plans, .about, .contact {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .plans h2, .about h2, .contact h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .plan {
+            background-color: #34495e;
+            padding: 20px;
+            margin: 10px;
+            display: inline-block;
+            width: 250px;
+            border-radius: 10px;
+        }
+        .plan h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .plan p {
+            margin: 5px 0;
+        }
+        .plan button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .plan button:hover {
+            background-color: #2ecc71;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            margin-top: 20px;
+        }
+        form input, form textarea, form button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        form button {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #2980b9;
+        }
+        .manage {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .manage button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .manage button:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+    <script>
+        function createManagementPage(serverType) {
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Gerenciamento do Servidor</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #1e1e1e;
+                            color: #fff;
+                            text-align: center;
+                            padding: 20px;
+                        }
+                        h1 {
+                            color: #2ecc71;
+                        }
+                        button {
+                            background-color: #e74c3c;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            font-size: 1em;
+                            cursor: pointer;
+                            margin: 10px;
+                        }
+                        button:hover {
+                            background-color: #c0392b;
+                        }
+                        .ip-button {
+                            background-color: #3498db;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            font-size: 1em;
+                            cursor: pointer;
+                        }
+                        .ip-button:hover {
+                            background-color: #2980b9;
+                        }
+                        input {
+                            padding: 10px;
+                            margin: 10px auto;
+                            display: block;
+                            font-size: 1em;
+                            width: 80%;
+                            max-width: 300px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                        }
+                    </style>
+                    <script>
+                        function updateIP() {
+                            const newIP = document.getElementById('ip-input').value;
+                            if (newIP) {
+                                document.getElementById('current-ip').innerText = newIP;
+                                alert('O IP do servidor foi atualizado para: ' + newIP);
+                            } else {
+                                alert('Por favor, insira um IP válido.');
+                            }
+                        }
+                    </script>
+                </head>
+                <body>
+                    <h1>Gerenciamento do Servidor</h1>
+                    <p>Você está gerenciando um servidor do plano: <strong>${serverType}</strong>.</p>
+                    <p>Aqui você pode iniciar, parar ou reiniciar seu servidor.</p>
+                    <button onclick="alert('Servidor iniciado!')">Iniciar Servidor</button>
+                    <button onclick="alert('Servidor parado!')">Parar Servidor</button>
+                    <button onclick="alert('Servidor reiniciado!')">Reiniciar Servidor</button>
+                    <p>IP do Servidor: <span id="current-ip">192.168.0.1</span></p>
+                    <input type="text" id="ip-input" placeholder="Digite o novo IP do servidor">
+                    <button class="ip-button" onclick="updateIP()">Atualizar IP</button>
+                </body>
+                </html>
+            `);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Hospedagem Minecraft 24h - Grátis</h1>
+    </header>
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#plans">Planos</a>
+        <a href="#about">Sobre Nós</a>
+        <a href="#contact">Contato</a>
+    </nav>
+    <section class="banner" id="home">
+        <h2>Hospede seu servidor de Minecraft de graça, 24 horas por dia!</h2>
+    </section>
+    <section class="plans" id="plans">
+        <h2>Planos de Hospedagem</h2>
+        <div class="plan">
+            <h3>Plano Gratuito</h3>
+            <p>1GB RAM</p>
+            <p>Slot para até 10 jogadores</p>
+            <p>R$0/mês</p>
+            <button onclick="createManagementPage('Gratuito')">Selecionar</button>
+        </div>
+        <div class="plan">
+            <h3>Plano Básico</h3>
+            <p>2GB RAM</p>
+            <p>Slot para até 20 jogadores</p>
+            <p>R$25/mês</p>
+            <button onclick="createManagementPage('Básico')">Selecionar</button>
+        </div>
+        <div class="plan">
+            <h3>Plano Avançado</h3>
+            <p>4GB RAM</p>
+            <p>Slot para até 50 jogadores</p>
+            <
